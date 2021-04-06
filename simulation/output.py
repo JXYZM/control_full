@@ -53,7 +53,7 @@ def generate_minfo(ma, mb, m, num_of_flight):
             mi_tf[ma[i][j][0]] = i
         for j in range(len(mb[i])):
             mi_ts[mb[i][j][0]] = i
-            avail_m.append(mb[i][j][0])
+            avail_m.append("m " + str(mb[i][j][0]))
     minfo = []
     for i in range(len(m)):
         tmp = {}

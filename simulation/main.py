@@ -161,8 +161,8 @@ def handle_client():
                 CURRENT_COST[i] = generate_cost_current(deepcopy(cost[i]), i)
                 #print("n: {} | p: {} | a: {} | b: {} | t: {} | c: {}".format(n, POSITION[i], MISSION_A[i], MISSION_B[i], TODO_LIST[i], CURRENT_COST[i]))
             finfo = generate_finfo(deepcopy(POSITION), deepcopy(MISSION_A), deepcopy(MISSION_B), deepcopy(CURRENT_COST), deepcopy(TODO_LIST), NUM_OF_FLIGHT)
-            minfo, _ = generate_minfo(deepcopy(MISSION_A), deepcopy(MISSION_B), deepcopy(MISSION_ALL), NUM_OF_FLIGHT)
-            response_body = json.dumps({"todo_list": TODO_LIST, "position": POSITION, "flight_info": finfo, "mission_info": minfo})
+            minfo, avail_m = generate_minfo(deepcopy(MISSION_A), deepcopy(MISSION_B), deepcopy(MISSION_ALL), NUM_OF_FLIGHT)
+            response_body = json.dumps({"todo_list": TODO_LIST, "position": POSITION, "flight_info": finfo, "mission_info": minfo, "avail_mission": avail_m})
             return response_body
         if input_from_ui["type"] == 1:
             message = ""
