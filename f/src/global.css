@@ -25,24 +25,33 @@ css样式
 
 .my_map {
   grid-row: 1/13;
-  grid-column: 1/12;
+  grid-column: 1/11;
   padding: 5px 5px 5px 5px;
+  border: 2px solid;
 }
 
 .my_manage {
   grid-row: 1/21;
-  grid-column: 12/21;
+  grid-column: 11/21;
   padding: 5px 5px 5px 5px;
   overflow: auto;
+  border: 2px solid;
+  margin-left: 10px;
+}
+
+.my_manage .ant-card.ant-card-bordered {
+  border: 1px dotted gray;
 }
 
 .my_control {
   grid-row: 13/21;
-  grid-column: 1/12;
+  grid-column: 1/11;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   padding: 5px 5px 5px 5px;
+  border: 2px solid;
+  margin-top: 5px;
 }
 
 .my_start {
@@ -64,5 +73,10 @@ css样式
 }
 
 .ant-descriptions-view {
+  overflow: auto;
+}
+
+.ant-steps.ant-steps-horizontal.ant-steps-small.ant-steps-label-vertical {
+  padding: 20px 0px 0px 0px;
   overflow: auto;
 }

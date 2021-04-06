@@ -27,7 +27,7 @@ export default {
         battery: '',
         ma: '',
         mb: '',
-        list: '',
+        list: [],
         load: '',
         cost: '',
       },

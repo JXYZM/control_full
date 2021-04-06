@@ -11,7 +11,7 @@ SPEED_OF_FLIGHT = 7.5
 
 class Flight(object):
 
-    def __init__(self, point, distance, mission_a):
+    def __init__(self, point, distance, mission_a, mission_b):
         # POINT {}
         self._point = point
         # DIST [[]]
@@ -21,7 +21,7 @@ class Flight(object):
         # mission A
         self._mission_a = mission_a
         # mission B
-        self._mission_b = []
+        self._mission_b = mission_b
         # new route
         self._route = []
         # route finished
@@ -79,21 +79,21 @@ class Flight(object):
             # the head is finished
             self._todo_list.remove(temp)
             # find missions finished
-            if "put" in temp["todo"].keys():
+            if "put" in temp.keys():
                 # to store the missions have been finished
                 finish = []
                 for j in range(len(self._mission_a)):
-                    if self._mission_a[j][0] in temp["todo"]["put"]:
+                    if self._mission_a[j][0] in temp["put"]:
                         finish.append(self._mission_a[j])
                 # remove the missions from A
                 for j in range(len(finish)):
                     self._mission_a.remove(finish[j])
             # find missions started
-            if "get" in temp["todo"].keys():
+            if "get" in temp.keys():
                 # to store the missions have been started
                 start = []
                 for j in range(len(self._mission_b)):
-                    if self._mission_b[j][0] in temp["todo"]["get"]:
+                    if self._mission_b[j][0] in temp["get"]:
                         start.append(self._mission_b[j])
                 # remove the missions from B and add them to A
                 for j in range(len(start)):
@@ -104,9 +104,10 @@ class Flight(object):
     """
     B + todo_list -> B + todo_list + route
     """
-    def update_from_center(self, mission_b, todo_list):
+    def update_from_center(self, mission_a, mission_b, todo_list):
         # copy from the center
         self._route.clear()
+        self._mission_a = mission_a
         self._mission_b = mission_b
         self._todo_list = todo_list
         # calculate the route
