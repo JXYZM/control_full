@@ -1,0 +1,68 @@
+/*
+global.css
+css样式
+*/
+.container,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.header {
+  height: 70px;
+  width: 100%;
+  background-color: rgb(3, 19, 48);
+}
+
+.content {
+  height: calc(100% - 70px);
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  padding: 10px 10px 10px 10px;
+}
+
+.my_map {
+  grid-row: 1/13;
+  grid-column: 1/12;
+  padding: 5px 5px 5px 5px;
+}
+
+.my_manage {
+  grid-row: 1/21;
+  grid-column: 12/21;
+  padding: 5px 5px 5px 5px;
+  overflow: auto;
+}
+
+.my_control {
+  grid-row: 13/21;
+  grid-column: 1/12;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  padding: 5px 5px 5px 5px;
+}
+
+.my_start {
+  grid-row: 1/11;
+  grid-column: 1/2;
+  padding: 5px 5px 5px 5px;
+}
+
+.my_interact {
+  grid-row: 1/11;
+  grid-column: 2/11;
+  padding: 5px 5px 5px 5px;
+  overflow: auto;
+}
+
+.td {
+  text-overflow: unset;
+  white-space: nowrap;
+}
+
+.ant-descriptions-view {
+  overflow: auto;
+}

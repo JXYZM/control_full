@@ -1,0 +1,36 @@
+/*
+load_point.js
+加载点信息
+*/
+export default [
+  { key: 0, position: { longitude: 118.955476, latitude: 32.112982 } },
+  { key: 1, position: { longitude: 118.956335, latitude: 32.113378 } },
+  { key: 2, position: { longitude: 118.956324, latitude: 32.114623 } },
+  { key: 3, position: { longitude: 118.956007, latitude: 32.115277 } },
+  { key: 4, position: { longitude: 118.956619, latitude: 32.116245 } },
+  { key: 5, position: { longitude: 118.957311, latitude: 32.115868 } },
+  { key: 6, position: { longitude: 118.957375, latitude: 32.114959 } },
+  { key: 7, position: { longitude: 118.9573, latitude: 32.113173 } },
+  { key: 8, position: { longitude: 118.958191, latitude: 32.11415 } },
+  { key: 9, position: { longitude: 118.958019, latitude: 32.114995 } },
+  { key: 10, position: { longitude: 118.958266, latitude: 32.115849 } },
+  { key: 11, position: { longitude: 118.958877, latitude: 32.114745 } },
+  { key: 12, position: { longitude: 118.959199, latitude: 32.113373 } },
+  { key: 13, position: { longitude: 118.959881, latitude: 32.113478 } },
+  { key: 14, position: { longitude: 118.960224, latitude: 32.114677 } },
+  { key: 15, position: { longitude: 118.959425, latitude: 32.115622 } },
+  { key: 16, position: { longitude: 118.95943, latitude: 32.116195 } },
+  { key: 17, position: { longitude: 118.960396, latitude: 32.116167 } },
+  { key: 18, position: { longitude: 118.960385, latitude: 32.115718 } },
+  { key: 19, position: { longitude: 118.960664, latitude: 32.114795 } },
+  { key: 20, position: { longitude: 118.960921, latitude: 32.113673 } },
+  { key: 21, position: { longitude: 118.962187, latitude: 32.113423 } },
+  { key: 22, position: { longitude: 118.961651, latitude: 32.114318 } },
+  { key: 23, position: { longitude: 118.961329, latitude: 32.11485 } },
+  { key: 24, position: { longitude: 118.961141, latitude: 32.115168 } },
+  { key: 25, position: { longitude: 118.962091, latitude: 32.115281 } },
+  { key: 26, position: { longitude: 118.962021, latitude: 32.11589 } },
+  { key: 27, position: { longitude: 118.961517, latitude: 32.115868 } },
+  { key: 28, position: { longitude: 118.961597, latitude: 32.116485 } },
+  { key: 29, position: { longitude: 118.960771, latitude: 32.115913 } },
+]
