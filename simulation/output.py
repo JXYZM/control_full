@@ -40,6 +40,10 @@ def generate_finfo(pos, ma, mb, cost, todolist, num_of_flight):
                 t["descrip"] += "get : "
                 for k in range(len(todolist[i][j]["get"])):
                     t["descrip"] += str(todolist[i][j]["get"][k]) + " "
+            if "action" in todolist[i][j].keys():
+                t["descrip"] += "action : "
+                for k in range(len(todolist[i][j]["action"])):
+                    t["descrip"] += todolist[i][j]["action"][k] + " "
             tmp["list"].append(t)
         finfo.append(deepcopy(tmp))
     return deepcopy(finfo)

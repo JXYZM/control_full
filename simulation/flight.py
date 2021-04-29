@@ -7,7 +7,7 @@ flight status maintain
 from copy import deepcopy
 import math
 
-SPEED_OF_FLIGHT = 7.5
+SPEED_OF_FLIGHT = 0.75
 
 class Flight(object):
 

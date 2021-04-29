@@ -16,10 +16,11 @@ CORS(app, resources=r'/*')
 from copy import deepcopy
 from flight import Flight
 from output import *
+from handle import *
 import math
 
 NUM_OF_FLIGHT = 3
-SPEED_OF_FLIGHT = 7.5
+SPEED_OF_FLIGHT = 0.75
 NUM_OF_POINT = 30
 
 POINT = {}
@@ -151,6 +152,7 @@ def handle_client():
     else:
         input_from_ui = json.loads(tmp)
         print(input_from_ui)
+        global TODO_LIST, MISSION_A, MISSION_B, POSITION, FLIGHT, CURRENT_COST, MISSION_ALL
         if input_from_ui["type"] == 0:
             for i in range(NUM_OF_FLIGHT):
                 POSITION[i] = FLIGHT[i].get_position(1)
@@ -165,12 +167,10 @@ def handle_client():
             response_body = json.dumps({"todo_list": TODO_LIST, "position": POSITION, "flight_info": finfo, "mission_info": minfo, "avail_mission": avail_m})
             return response_body
         if input_from_ui["type"] == 1:
-            message = ""
-            for i in range(len(input_from_ui["flights"])):
-                message += input_from_ui["flights"][i]["flight_id"]
-                if i < len(input_from_ui["flights"]) - 1:
-                    message += ", "
-            message += " 的动作配置信息已送达"
+            message = "个体动作配置信息已送达"
+            TODO_LIST = handle_flight_control(deepcopy(input_from_ui), deepcopy(TODO_LIST))
+            for i in range(NUM_OF_FLIGHT):
+                FLIGHT[i].update_from_center(deepcopy(MISSION_A[i]), deepcopy(MISSION_B[i]), deepcopy(TODO_LIST[i]))
             response_body = json.dumps({"message": message})
             return response_body
         if input_from_ui["type"] == 2:
