@@ -19,9 +19,10 @@ from output import *
 from handle import *
 import math
 
-NUM_OF_FLIGHT = 3
 SPEED_OF_FLIGHT = 0.75
-NUM_OF_POINT = 30
+
+NUM_OF_FLIGHT = -1
+NUM_OF_POINT = -1
 
 POINT = {}
 DIST = []
@@ -35,45 +36,23 @@ POSITION = []
 CURRENT_COST = []
 
 def init_center():
-    global MISSION_ALL
-    global MISSION_A
-    global MISSION_B
-    global TODO_LIST
-    global POSITION
-    global CURRENT_COST
-    # global PATH
-    # for i in range(NUM_OF_FLIGHT):
-    #     MISSION_A.append([])
-    #     MISSION_B.append([])
-    #     TODO_LIST.append([])
-    #     POSITION.append([118958877.0, 32114745.0])
-    #     CURRENT_COST.append(0.0)
-    MISSION_ALL.append([0, 3, 10, 42])
-    MISSION_ALL.append([1, 22, 5, 39])
-    MISSION_ALL.append([2, 10, 5, 60])
-    MISSION_ALL.append([3, 17, 14, 37])
-    MISSION_ALL.append([4, 4, 24, 44])
-    MISSION_ALL.append([5, 14, 24, 53])
-    MISSION_ALL.append([6, 6, 13, 51])
-    MISSION_ALL.append([7, 27, 20, 46])
-    MISSION_ALL.append([8, 13, 20, 56])
-    MISSION_A.append([[0, 3, 10, 42], [1, 22, 5, 39]])
-    MISSION_A.append([[3, 17, 14, 37], [4, 4, 24, 44]])
-    MISSION_A.append([[6, 6, 13, 51], [7, 27, 20, 46]])
-    MISSION_B.append([[2, 10, 5, 60]])
-    MISSION_B.append([[5, 14, 24, 53]])
-    MISSION_B.append([[8, 13, 20, 56]])
-    TODO_LIST.append([{"point": 10, "put": [0], "get": [2]}, {"point": 5, "put": [1, 2]}])
-    TODO_LIST.append([{"point": 14, "put": [3], "get": [5]}, {"point": 24, "put": [4, 5]}])
-    TODO_LIST.append([{"point": 13, "put": [6], "get": [8]}, {"point": 20, "put": [7, 8]}])
-    for i in range(NUM_OF_FLIGHT):
-        POSITION.append([118958877.0, 32114745.0])
-        CURRENT_COST.append(0.0)
+    global NUM_OF_FLIGHT, MISSION_ALL, MISSION_A, MISSION_B, TODO_LIST, POSITION, CURRENT_COST
+    f = open("data/information.json")
+    content = json.load(f)
+    f.close()
+    NUM_OF_FLIGHT = content[0]
+    MISSION_ALL = content[1]
+    MISSION_A = content[2]
+    MISSION_B = content[3]
+    TODO_LIST = content[4]
+    POSITION = content[5]
+    CURRENT_COST = content[6]
 
 def initialize_point():
-    global POINT
+    global POINT, NUM_OF_POINT
     f = open("data/point.txt")
     lines = f.read().splitlines()
+    NUM_OF_POINT = len(lines)
     for line in lines:
         temp = line.split(" ")
         POINT[int(temp[0])] = [float(temp[1]), float(temp[2])]
