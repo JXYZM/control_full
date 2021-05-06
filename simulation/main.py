@@ -153,12 +153,11 @@ def handle_client():
             response_body = json.dumps({"message": message})
             return response_body
         if input_from_ui["type"] == 2:
-            message = ""
-            for i in range(len(input_from_ui["missions"])):
-                message += input_from_ui["missions"][i]["mission_id"]
-                if i < len(input_from_ui["missions"]) - 1:
-                    message += ", "
-            message += " 的调整信息已送达"
+            message = "任务调整信息已送达"
+            cost = generate_distance(deepcopy(POSITION))
+            TODO_LIST, MISSION_B = handle_mission_control(deepcopy(input_from_ui), deepcopy(TODO_LIST), deepcopy(MISSION_B), deepcopy(MISSION_ALL), deepcopy(cost))
+            for i in range(NUM_OF_FLIGHT):
+                FLIGHT[i].update_from_center(deepcopy(MISSION_A[i]), deepcopy(MISSION_B[i]), deepcopy(TODO_LIST[i]))
             response_body = json.dumps({"message": message})
             return response_body
 

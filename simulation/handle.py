@@ -42,3 +42,31 @@ def handle_flight_control(input, todo_list):
                 todo_list[flight_id] = todo_list[flight_id][0:insert] + [{"point": point_id, "action": [action]}] + todo_list[flight_id][insert:]
 
     return deepcopy(todo_list)
+
+
+
+def handle_mission_control(input, tdl, mb, mall, cost):
+    for i in range(len(input["missions"])):
+        mission_id = int(input["missions"][i]["mission_id"][2:])
+        mission = mall[mission_id]
+        pt = -1
+        for j in range(len(mb)):
+            if mission in mb[j]:
+                pt = j
+                break
+        mb[pt].remove(mission)
+        for j in range(len(tdl[pt])):
+            if tdl[pt][j]["point"] == mission[1]:
+                if "get" in tdl[pt][j].keys():
+                    if mission_id in tdl[pt][j]["get"]:
+                        tdl[pt][j]["get"].remove(mission_id)
+                        if len(tdl[pt][j]["get"]) == 0:
+                            tdl[pt][j].pop("get")
+            elif tdl[pt][j]["point"] == mission[2]:
+                if "put" in tdl[pt][j].keys():
+                    if mission_id in tdl[pt][j]["put"]:
+                        tdl[pt][j]["put"].remove(mission_id)
+                        if len(tdl[pt][j]["put"]) == 0:
+                            tdl[pt][j].pop("put")
+
+    return deepcopy(tdl), deepcopy(mb)
