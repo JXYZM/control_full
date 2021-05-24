@@ -7,7 +7,7 @@ import { message } from 'antd'
 import {
   postChangeFlight,
   queryFromHost,
-  postChangeMission,
+  postChangeMission
 } from '../services/method'
 
 export default {
@@ -29,8 +29,8 @@ export default {
         mb: '',
         list: [],
         load: '',
-        cost: '',
-      },
+        cost: ''
+      }
     ],
     mission_info: [
       {
@@ -38,10 +38,10 @@ export default {
         key: '0',
         id: 'm 0',
         des: '',
-        status: ['', 'default'],
-      },
+        status: ['', 'default']
+      }
     ],
-    avail_mission: ['m 0'],
+    avail_mission: ['m 0']
   },
   effects: {
     *query_from_host({ payload }, sagaEffects) {
@@ -56,7 +56,11 @@ export default {
       const { call, put } = sagaEffects
       const response = yield call(postChangeFlight, payload)
       //console.log(response)
-      message.success(response['message'], 3)
+      if (response['message'] == '个体动作配置信息已送达') {
+        message.success(response['message'], 3)
+      } else {
+        message.error(response['message'], 3)
+      }
       //yield put({ type: 'Change', payload: response })
     },
     *post_change_mission({ payload }, sagaEffects) {
@@ -66,7 +70,7 @@ export default {
       //console.log(response)
       message.success(response['message'], 3)
       //yield put({ type: 'Change', payload: response })
-    },
+    }
   },
   reducers: {
     Change(state, { payload: datasets }) {
@@ -80,8 +84,8 @@ export default {
         position: next_position,
         flight_info: next_flight_info,
         mission_info: next_mission_info,
-        avail_mission: next_avail_mission,
+        avail_mission: next_avail_mission
       }
-    },
-  },
+    }
+  }
 }

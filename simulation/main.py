@@ -146,6 +146,10 @@ def handle_client():
             response_body = json.dumps({"todo_list": TODO_LIST, "position": POSITION, "flight_info": finfo, "mission_info": minfo, "avail_mission": avail_m})
             return response_body
         if input_from_ui["type"] == 1:
+            for i in range(len(input_from_ui["flights"])):
+                p_id = int(input_from_ui["flights"][i]["point_id"])
+                if p_id < 0 or p_id >= NUM_OF_POINT:
+                    return json.dumps({"message": "地点信息配置错误"})
             message = "个体动作配置信息已送达"
             TODO_LIST = handle_flight_control(deepcopy(input_from_ui), deepcopy(TODO_LIST))
             for i in range(NUM_OF_FLIGHT):

@@ -462,7 +462,10 @@ export default class Amap extends Component {
                                     }
                                   ]}
                                 >
-                                  <Input placeholder="动作指令" />
+                                  <Select placeholder="动作指令" allowClear>
+                                    <Option value={'delete'}>{'delete'}</Option>
+                                    <Option value={'change'}>{'change'}</Option>
+                                  </Select>
                                 </Form.Item>
                                 <Form.Item
                                   {...field}
